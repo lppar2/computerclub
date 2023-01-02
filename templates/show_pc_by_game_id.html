@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ПК, на которых есть ваша игра</title>
+   <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="search_game">
+    <form action="" method="post" class="form-contact">
+        <div class="task_title">ID игры: </div>
+            <input class="task_input" type="text" name="id_gam"  value="" required />
+    </form>
+</div>
+ {% for game in games %}
+      <div class="title"><label>ID игры: </label> {{ game[0]}}</div>
+            <div class="annonce">ID компьютера: {{ game[1] }}</div>
+{% endfor %}
+</body>
+</html>

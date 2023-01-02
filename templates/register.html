@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+     <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    {% if admin %}
+<div id="add-user">
+    <form action="" method="post" class="form-contact">
+             <div class="add-user"> Имя: </div>
+            <input class="add-user" type="text" name="firstname" value="" required />
+        <div class="add-user">Фамилия: </div>
+            <input class="add-user" type="text" name="lastname" value="" required />
+        <div class="add-user">Пасспорт: </div>
+            <input class="add-user" type="text" name="passport" value="" placeholder="xxxx xxxxxx"  required />
+        <div class="add-user">Телефон: </div>
+            <input class="add-user" type="text" name="phone" value="" placeholder="+7xxxxxxxxxx" required />
+        <div class="add-user">Логин: </div>
+            <input class="add-user" type="text" name="username" value="" required />
+        <div class="add-user">Пароль: </div>
+            <input class="add-user" type="password" name="psw" value="" required />
+        <div class="add-user">Повтор пароля: </div>
+            <input class="add-user" type="password" name="psw2" value="" required />
+        <div class="task_title">Роль:
+            <select class="reg_select" name="role">
+                <option value="administrator">администратор</option>
+                <option value="client">клиент</option>
+            </select>
+            </div>
+        <div>
+            <input class="task-button" type="submit" value="Регистрация" />
+        </div>
+    </form>
+</div>
+    {% endif %}
+{% if client %}
+    <h2 class="exception">Вы уже зарегестрированы. Чтобы зарегестрировать новый аккаунт, выйдите из аккаунта в своем профиле.</h2>
+   {% endif %}
+{% if not admin and not client%}
+            <div class="add-user">
+    <form action="" method="post" class="form-contact">
+        <div class="add-user"> Имя: </div>
+            <input class="add-user" type="text" name="firstname" value="" required />
+        <div class="add-user">Фамилия: </div>
+            <input class="add-user" type="text" name="lastname" value="" required />
+        <div class="add-user">Пасспорт: </div>
+            <input class="add-user" type="text" name="passport" value="" placeholder="xxxx xxxxxx"  required />
+        <div class="add-user">Телефон: </div>
+            <input class="add-user" type="text" name="phone" value="" placeholder="+7xxxxxxxxxx" required />
+        <div class="add-user">Логин: </div>
+            <input class="add-user" type="text" name="username" value="" required />
+        <div class="add-user">Пароль: </div>
+            <input class="add-user" type="password" name="psw" value="" required />
+        <div class="add-user">Повтор пароля: </div>
+            <input class="add-user" type="password" name="psw2" value="" required />
+        <div>
+            <input class="registr_button" type="submit" value="Регистрация" />
+        </div>
+    </form>
+</div>
+        {% endif %}
+</body>
+</html>

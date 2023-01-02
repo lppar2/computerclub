@@ -1,0 +1,78 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: Impact;
+    background: #0b0709;
+}
+h1{
+    margin: 1.5vh;
+    font-size: calc(1.5vw + 3vh);
+    color: #ec121f;
+    font-family: Impact;
+    text-align: center;
+}
+.log_form {
+    width: calc(10vh + 10vw);
+    margin: 1.5vh;
+    padding: 1.5vh;
+    background-color: #0b0709;
+}
+
+input.log_input{
+    width: 29vh;
+    height: 6vh;
+    border: none;
+    border-bottom: 1px solid #7a0132;
+    font-size: calc(6vw + 6vh);
+}
+
+.log_button{
+    font-size: 5vh;
+    border-radius: 0.5vh;
+    border: 0.5vh solid #520320;
+    background: #830632;
+    color: white;
+    padding: 1% 20%;
+    font-family: Impact;
+}
+
+
+
+a:hover{
+    color: #ed7d70;
+    text-decoration: underline;
+}
+
+.flash
+{
+    padding: 10px;
+}
+
+.container
+{
+   position: absolute;
+   top: 35vh;
+   left: 37%;
+   margin-left: calc(5vh + 5vw);
+   margin-top: auto;
+}
+input[type="text"]
+{
+    font-size: calc(2vw + 2vh);
+}
+input[type="password"]
+{
+    font-size: calc(2vw + 2vh);
+}
+span.log_rem
+{
+    color: #bac1c9;
+    font-family: Impact;
+    font-size: 2vh;
+}
+
+input.login_input
+{
+    width: 38vh;
+    height: 6vh;
+}

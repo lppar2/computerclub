@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои карточки клиента</title>
+     <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    {% if client %}
+        {% for card in cards %}
+            <div class="client_card">
+            <div class="title"><label>ID карты: </label> {{ card[0]}}</div>
+            <div class="annonce">Ваш ID: {{ card[1] }}</div>
+            <div class="annonce">ID компьютера: {{ card[2] }}</div>
+            <div class="annonce">Дата посещения: {{ card[3]}}</div>
+                <div class="annonce">Стоимость: {{ card[4]}} руб</div>
+                <div class="annonce">Время (мин): {{ card[5]}}</div></div>
+                {% endfor %}
+    {% endif %}
+</body>
+</html>

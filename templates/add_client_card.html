@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить карточку клиента</title>
+  <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+ {% if admin  %}
+<div id="add-card">
+    <form action="" method="post" class="form-contact">
+        <div class="task_title">ID клиента: </div>
+            <input class="task_input" type="text" name="id_cli" placeholder="Пример: БАСК2-22" value="" required />
+        <div class="task_title">ID компьютера: </div>
+            <input class="task_input" type="text" name="id_com" placeholder="Пример: Баскетбол" value="" required />
+        <div class="task_title">Время (минуты): </div>
+            <input class="task_input" type="text" name="min" placeholder="Пример: БАСК2-22" value="" required />
+        <div>
+            <input class="task-button" type="submit" value="Добавить карточку клиента" />
+        </div>
+    </form>
+</div>
+    {% endif %}
+{% if not admin %}
+            <p>Доступ запрещен">главную</p> страницу.
+        {% endif %}
+</body>
+</html>

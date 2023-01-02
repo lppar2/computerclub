@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой профиль</title>
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+ <div id="prof_form">
+    <ul class="profile-info">
+        <li class="prof"> Имя: {{ current_user.getName()}}</li>
+        <li class="prof"> Фамилия: {{ current_user.getLastName()}}</li>
+        <li class="prof"> Ваш ID: {{ current_user.get_id()}}</li>
+        <li class="prof"> Статус: {{ current_user.getRoleId()}}</li>
+         <li class="prof"> Последнее посещение: {{ current_user.getLastVisit()}}</li>
+        <li class="prof"> <a class="prof" href="{{ url_for('client_card') }}">Мои карточки клиента</a></li>
+        {% if admin  %}
+        <li class="prof"> <a class="prof" href="{{ url_for('addClientCard') }}">Добавить карточку клиента</a></li>
+         {% endif %}
+         <li class="prof"> <a class="prof" href="{{ url_for('showGamePc') }}">Найти пк с игрой</a></li>
+        </ul>
+        <p><a href="{{ url_for('logout') }}">Выйти</a>
+ </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игры</title>
+      <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+ <h1>Игры</h1>
+
+	     <div class="room">
+            {% for game in games %}
+                <div class="room">
+                    <div class="title">Название: {{ game[1] }}</div>
+                    <div class="annonce">Разработчик: {{ game[2] }}</div>
+                  <div class="annonce">Год выпуска: {{ game[3] }}</div>
+                  <div class="annonce">Жанр: {{ game[4] }}</div>
+                  <div class="annonce">Можно взять в аренду: {{ game[5] }}</div>
+
+                </div>
+             {% endfor %}
+        </div>
+</body>
+</html>

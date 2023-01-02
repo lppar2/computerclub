@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BOBER The Computer club</title>
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+</head>
+<body>
+    <div class="header">
+
+    </div>
+
+    <div class="content">
+        <h1>BOBER</h1>
+        <h2>The Computer club</h2>
+    </div>
+
+    <ul class="mainmenu">
+            <li> <a href="{{ url_for('register') }}">Зарегестрироваться</a> </li>
+            <li> <a href="{{ url_for('login') }}">Войти</a> </li>
+         <li> <a href="{{ url_for('profile') }}">Мой профиль</a> </li>
+             <li> <a href="{{ url_for('showRooms') }}">Наши игровые залы</a> </li>
+           <li> <a href="{{ url_for('showGames') }}">Игры</a> </li>
+
+
+
+    </ul>
+</body>
+</html>

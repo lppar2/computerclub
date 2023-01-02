@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+    <title>Залы</title>
+</head>
+<body>
+    <h1>Залы</h1>
+
+	     <div class="room">
+            {% for room in rooms %}
+                <div class="room">
+                    <div class="title">Название: {{ room[0] }}</div>
+                    <div class="annonce">Описание: {{ room[1] }}</div>
+
+                </div>
+             {% endfor %}
+        </div>
+
+    <div class="adaptivny-slayder">
+  <input type="radio" name="kadoves" id="slaid1" checked>
+  <input type="radio" name="kadoves" id="slaid2">
+  <input type="radio" name="kadoves" id="slaid3">
+
+  <div class="kadoves">
+  <label for="slaid1"></label>
+  <label for="slaid2"></label>
+  <label for="slaid3"></label>
+  </div>
+
+  <div class="adaptivny-slayder-lasekun">
+  <div class="abusteku-deagulus">
+      <img src="../static/images/room1.jpg"/>
+      <img src="../static/images/room2.jpg"/>
+      <img src="../static/images/room3.jpg"/></div>
+  </div>
+</div>
+</body>
+</html>
+
+
+

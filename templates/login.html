@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/login_style.css" type="text/css" rel="stylesheet">
+    <title>Войти в систему</title>
+    <style>.rightpic {
+    float: right; /* Выравнивание по правому краю */
+    margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+   }
+    </style>
+</head>
+<body>
+ {% for cat, msg in get_flashed_messages(True) %}
+    <div  class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+    <h1>Войти в систему</h1>
+                <img class="right-pic" src="../static/images/marmot_dance_2.gif" height="300" width="400"/>
+
+ <div class="container">
+	    <div class="screen">
+		    <div class="screen__content">
+                <form action="" method="post" class="form-contact">
+                        <div class="login_field">
+                                <input type="text" class="login_input" name="username" placeholder="Логин" value="" required >
+                        </div>
+                        <div class="login_field">
+                                <input type="password" class="login_input" name="psw" placeholder="Пароль" value="" required >
+                        </div>
+                        <div>
+                            <input type="checkbox" name="remainme" />
+                            <span class="log_rem">Запомнить меня</span>
+                        </div>
+                        <div>
+                            <input class="log_button" type="submit" value="Войти" />
+                        </div>
+                </form>
+            </div>
+
+
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
