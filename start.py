@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, flash, session, redirect, abort, g
+from flask import Flask, render_template, url_for, request, flash, session, redirect
 from DB import *
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from login import LoginUser
@@ -7,7 +7,6 @@ import psycopg2
 from config import host, user, password, db_name, port
 import re
 import os
-
 
 # подулючение виртуального окружения для получения секретных данных
 load_dotenv()
@@ -26,6 +25,7 @@ login.login_message_category = "success"
 user_is_client = False  # отображение вкладки с добавл. задания только для клиента
 user_is_admin = False  # отображение вкладки с добавл. задания только для админа
 
+
 # подключение без пароля
 def connect():
     try:
@@ -39,6 +39,8 @@ def connect():
         return connection
     except Exception as e:
         print(e)
+
+
 # Подключение к бд с паролем
 def connection_db(user_log, user_pass):
     try:
@@ -58,6 +60,7 @@ def connection_db(user_log, user_pass):
     except Exception as _ex:
         print("ERROR while working with PostgreSQL", _ex)
         return False
+
 
 @app.route('/')
 def start_page():
@@ -118,11 +121,13 @@ def profile():
     user_is_client = True if position_user == [2] else False
     return render_template("profile.html", title="Профиль", client=user_is_client, admin=user_is_admin)
 
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('start_page'))
+
 
 # регистрация пользователя
 @app.route('/register', methods=["POST", "GET"])
@@ -135,7 +140,7 @@ def register():
         position_user = getPositionUser(user_id, db)
         user_is_admin = True if position_user == [1] else False
         user_is_client = True if position_user == [2] else False
-    except:
+    except ValueError:
         user_is_admin = False
     if user_is_admin:
         if request.method == "POST":
@@ -143,8 +148,8 @@ def register():
                 if len(request.form['username']) > 0 and len(request.form['psw']) > 0 and \
                         request.form['psw'] == request.form['psw2']:
                     res = addUser(request.form['role'], request.form['firstname'], request.form['lastname'],
-                                request.form['passport'], request.form['phone'], request.form['username'],
-                                request.form['psw'], db)
+                                  request.form['passport'], request.form['phone'], request.form['username'],
+                                  request.form['psw'], db)
                     if res:
                         flash('Успешно зарегистрирован.', 'success')
                         return redirect(url_for('start_page'))
@@ -152,16 +157,14 @@ def register():
                         flash('Ошибка при добавлении в бд.', 'error')
                 else:
                     flash('Неверно заполнены поля', 'error')
-
-
     else:
         if request.method == "POST":
             with db:
                 if len(request.form['username']) > 0 and len(request.form['psw']) > 0 and \
                         request.form['psw'] == request.form['psw2']:
                     res = addUser('client', request.form['firstname'], request.form['lastname'],
-                                request.form['passport'], request.form['phone'], request.form['username'],
-                                request.form['psw'], db)
+                                  request.form['passport'], request.form['phone'], request.form['username'],
+                                  request.form['psw'], db)
                     if res:
                         flash('Успешно зарегестрирован.', 'success')
                         return redirect(url_for('start_page'))
@@ -171,11 +174,13 @@ def register():
                     flash('Неверно заполнены поля', 'error')
     return render_template('register.html', title="Регистрация работника.", admin=user_is_admin, client=user_is_client)
 
+
 @app.route('/showRooms')
 def showRooms():
     db = connect()
     room = getRooms(db)
     return render_template('rooms.html', rooms=room, title="Список залов")
+
 
 @app.route('/client_card')
 @login_required
@@ -208,7 +213,7 @@ def addClientCard():
             if not (id_clientt or id_compp or minutt):
                 flash("Заполните все поля", "error")
             else:
-                res = addClientCard(id_clientt, id_compp,minutt, db)
+                res = addClientCard(id_clientt, id_compp, minutt, db)
                 if not res:
                     flash('Ошибка добавления группы', category='error')
                 else:
@@ -217,9 +222,13 @@ def addClientCard():
     return render_template('add_client_card.html', title='Добавление карточки группы', admin=user_is_admin,
                            client=user_is_client)
 
-id_games = ['1', '2', '3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
+
+id_games = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
+            '20']
+
+
 # Отображаем список спорт. групп
-@app.route('/show_pc_by_game_id',  methods=["POST", "GET"])
+@app.route('/show_pc_by_game_id', methods=["POST", "GET"])
 @login_required
 def showGamePc():
     games_pc = ['', '']
@@ -244,11 +253,13 @@ def showGamePc():
                         games_pc = showPCgameid(game_id, db)
     return render_template('show_pc_by_game_id.html', client=user_is_client, admin=user_is_admin, games=games_pc)
 
+
 @app.route('/showGames')
 def showGames():
     db = connect()
     game = getGames(db)
     return render_template('games.html', games=game)
+
 
 if __name__ == '__main__':
     app.run()

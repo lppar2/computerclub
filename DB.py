@@ -3,7 +3,6 @@ from psycopg2.extras import DictCursor
 from psycopg2 import sql
 
 
-
 def getRooms(db):
     try:
         with db.cursor(cursor_factory=DictCursor) as cursor:
@@ -17,6 +16,7 @@ def getRooms(db):
         print(e)
         print("Ошибка при просмотре доступных залов")
     return False
+
 
 # получение пользователя из бд по его Id
 def getUser(user_id, db):
@@ -33,6 +33,7 @@ def getUser(user_id, db):
         print(e)
         print("Ошибка получения данных из бд.")
     return False
+
 
 # получение пользователя из бд по его логину
 def getUserByLogin(login, db):
@@ -120,7 +121,7 @@ def addUser(role, firstname, lastname, passport, phone, login, password, db):
         with db.cursor() as cursor:
             query = sql.SQL("CALL create_user({rol},{fn},{ln},{pasp},{ph},{lg},{psw})") \
                 .format(rol=sql.Literal(id_role), fn=sql.Literal(firstname), ln=sql.Literal(lastname),
-                         pasp=sql.Literal(passport), ph=sql.Literal(phone), lg=sql.Literal(login),
+                        pasp=sql.Literal(passport), ph=sql.Literal(phone), lg=sql.Literal(login),
                         psw=sql.Literal(password))
             cursor.execute(query)
             db.commit()
@@ -131,7 +132,8 @@ def addUser(role, firstname, lastname, passport, phone, login, password, db):
 
     return True
 
-def getClientCardTable(client_id,db):
+
+def getClientCardTable(client_id, db):
     try:
         with db.cursor(cursor_factory=DictCursor) as cursor:
             cursor.execute("SELECT * FROM client_card WHERE id_client = %(client_num)s",
@@ -146,6 +148,7 @@ def getClientCardTable(client_id,db):
         print("Ошибка получения карточек клиента из бд.")
     return False
 
+
 def addClientCard(id_cli, id_comp, minut, db):
     try:
         with db.cursor() as cursor:
@@ -158,6 +161,7 @@ def addClientCard(id_cli, id_comp, minut, db):
         return False
 
     return True
+
 
 def showPCgameid(id_gam, db):
     try:
@@ -174,4 +178,3 @@ def showPCgameid(id_gam, db):
         return False
 
     return True
-

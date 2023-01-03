@@ -33,9 +33,8 @@ for i in range(1, 1000):
         phone = person.telephone(mask='+7##########')
         login = person.username()
         password = person.password()
-        cursor.execute("CALL create_user(%s,%s,%s,%s,%s,%s,%s)",(2, firstname, lastname, passport, phone, login, password))
+        cursor.execute("CALL create_user(%s,%s,%s,%s,%s,%s,%s)",
+                       (2, firstname, lastname, passport, phone, login, password))
         db.commit()
 
 db.close()
-
-
